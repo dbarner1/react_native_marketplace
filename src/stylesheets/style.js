@@ -14,6 +14,10 @@ module.exports = StyleSheet.create({
     width: 26,
     height: 26,
   },
+  big_icon: {
+    width: 75,
+    height: 75,
+  },
   home: {
     display: 'flex',
     flex: 1,
@@ -30,22 +34,40 @@ module.exports = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'nowrap',
     overflow: 'scroll',
-    marginTop:70,
+    marginTop:0,
     height: 100
+  },
+  aisleScreen: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  ScreenHeader: {
+    display: 'flex',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0,0,0,.2)',
+    width: '100%',
+    paddingTop:30
   },
   aisleSelectImage: {
     width: 120,
     height: 120,
+    borderWidth: 1,
+    borderColor: 'white'
   },
   aisleScrollTitle: {
     color: 'white',
+    backgroundColor: 'rgba(0,0,0,.2)',
+    textAlign: 'center',
     paddingTop: 10,
     paddingBottom: 10,
+    borderWidth: 1,
+    borderColor: 'white'
   },
   currentAisle: {
     height: 400
   },
-  aisleSelectDiv: {
-
+  product: {
+    borderWidth: 1,
+    borderColor: 'red'
   }
 });

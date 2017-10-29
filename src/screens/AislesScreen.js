@@ -42,34 +42,56 @@ class AislesScreen extends Component {
     this.alertMe = this.alertMe.bind(this);
     this.state = {
       aisleSelected:'',
-      urlSelected:'https://barner-marketplace-api.herokuapp.com/products',
+      urlSelected:'',
       new_product: ''
     };
   }
 
-  alertMe() {
-    this.setState({ aisleSelected: aislesData[0].title  });
-    this.setState({ urlSelected: aislesData[0].title });
-    this.setState({ new_product: aislesData[0].title  });
+  alertMe(aisleSelected, urlSelected, new_product) {
+    this.setState({ aisleSelected: aisleSelected });
+    this.setState({ urlSelected: urlSelected });
+    this.setState({ new_product: new_product });
   }
 
   render() {
     return(
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <View style={styles.aisleScreen}>
+        <View style={styles.ScreenHeader}>
+          <Image
+            source={require('../images/logo.png')}
+            style={[styles.big_icon]} />
+        </View>
         <ScrollView horizontal={true} style={styles.allAislesScroll}>
           <View style={ styles.aisleSelectDiv }>
-            <TouchableHighlight onPress={() => this.alertMe()}>
-              <Image source={ require('../images/home.jpg') } style={styles.aisleSelectImage} />
+            <TouchableHighlight onPress={() => this.alertMe(aislesData[0].title, aislesData[0].url, aislesData[0].title)}>
+              <Image source={ {uri: aislesData[0].img} } style={styles.aisleSelectImage} />
             </TouchableHighlight>
             <Text style={styles.aisleScrollTitle}>{ aislesData[0].title } </Text>
           </View>
-          <View style={ styles.aisleSelectDiv }><Image source={ require('../images/home.jpg') } style={styles.aisleSelectImage}/><Text style={styles.aisleScrollTitle}>{ aislesData[0].title } </Text></View>
-          <View style={ styles.aisleSelectDiv }><Image source={ require('../images/home.jpg') } style={styles.aisleSelectImage}/><Text style={styles.aisleScrollTitle}>{ aislesData[0].title } </Text></View>
-          <View style={ styles.aisleSelectDiv }><Image source={ require('../images/home.jpg') } style={styles.aisleSelectImage}/><Text style={styles.aisleScrollTitle}>{ aislesData[0].title } </Text></View>
-          <View style={ styles.aisleSelectDiv }><Image source={ require('../images/home.jpg') } style={styles.aisleSelectImage}/><Text style={styles.aisleScrollTitle}>{ aislesData[0].title } </Text></View>
-          <View style={ styles.aisleSelectDiv }><Image source={ require('../images/home.jpg') } style={styles.aisleSelectImage}/><Text style={styles.aisleScrollTitle}>{ aislesData[0].title } </Text></View>
-          <View style={ styles.aisleSelectDiv }><Image source={ require('../images/home.jpg') } style={styles.aisleSelectImage}/><Text style={styles.aisleScrollTitle}>{ aislesData[0].title } </Text></View>
-          <View style={ styles.aisleSelectDiv }><Image source={ require('../images/home.jpg') } style={styles.aisleSelectImage}/><Text style={styles.aisleScrollTitle}>{ aislesData[0].title } </Text></View>
+          <View style={ styles.aisleSelectDiv }>
+            <TouchableHighlight onPress={() => this.alertMe(aislesData[1].title, aislesData[1].url, aislesData[1].title)}>
+              <Image source={ {uri: aislesData[1].img} } style={styles.aisleSelectImage} />
+            </TouchableHighlight>
+            <Text style={styles.aisleScrollTitle}>{ aislesData[1].title } </Text>
+          </View>
+          <View style={ styles.aisleSelectDiv }>
+            <TouchableHighlight onPress={() => this.alertMe(aislesData[2].title, aislesData[2].url, aislesData[2].title)}>
+              <Image source={ {uri: aislesData[2].img} } style={styles.aisleSelectImage} />
+            </TouchableHighlight>
+            <Text style={styles.aisleScrollTitle}>{ aislesData[2].title } </Text>
+          </View>
+          <View style={ styles.aisleSelectDiv }>
+            <TouchableHighlight onPress={() => this.alertMe(aislesData[3].title, aislesData[3].url, aislesData[3].title)}>
+              <Image source={ {uri: aislesData[3].img} } style={styles.aisleSelectImage} />
+            </TouchableHighlight>
+            <Text style={styles.aisleScrollTitle}>{ aislesData[3].title } </Text>
+          </View>
+          <View style={ styles.aisleSelectDiv }>
+            <TouchableHighlight onPress={() => this.alertMe(aislesData[4].title, aislesData[4].url, aislesData[4].title)}>
+              <Image source={ {uri: aislesData[4].img} } style={styles.aisleSelectImage} />
+            </TouchableHighlight>
+            <Text style={styles.aisleScrollTitle}>{ aislesData[4].title } </Text>
+          </View>
         </ScrollView>
         <View style={styles.currentAisle}>
           <Aisle urlSelected={this.state.urlSelected} aisleSelected={this.state.aisleSelected} />

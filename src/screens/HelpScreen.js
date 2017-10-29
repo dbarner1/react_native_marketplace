@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
-import {Text, View, StyleSheet } from 'react-native';
+import {Text, View, Image, StyleSheet } from 'react-native';
 import styles from '../stylesheets/style.js';
 
 class HelpScreen extends Component {
   render() {
     return(
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <View style={styles.ScreenHeader}>
+        <Image
+          source={require('../images/logo.png')}
+          style={[styles.big_icon]} />
           <Text>Your help is here</Text>
         </View>
     )

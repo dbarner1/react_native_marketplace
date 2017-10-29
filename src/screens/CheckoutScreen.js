@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
-import {Text, View, StyleSheet } from 'react-native';
+import {Text, View, Image, StyleSheet } from 'react-native';
 import styles from '../stylesheets/style.js';
 
 class CheckoutScreen extends Component {
   render() {
     return(
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <View style={styles.ScreenHeader}>
+        <Image
+          source={require('../images/logo.png')}
+          style={[styles.big_icon]} />
           <Text>Your checkout is here</Text>
         </View>
     )
