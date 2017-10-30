@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "name": "Bananas",
+    "description": "Ripe, Yellow, and Ready to Eat!",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Bananas.jpg/1024px-Bananas.jpg",
+    "price": 99,
+    "created_at": "2017-10-09T18:56:08.499Z",
+    "updated_at": "2017-10-09T18:56:08.499Z",
+    "aisle": null
+  },
+  {
+    "id": 2,
+    "name": "Apples",
+    "description": "Nothing like that crunchy red fruit!",
+    "image": "https://hdwallsource.com/img/2014/9/red-apple-wallpaper-34687-35470-hd-wallpapers.jpg",
+    "price": 89,
+    "created_at": "2017-10-09T19:01:35.483Z",
+    "updated_at": "2017-10-09T19:01:35.483Z",
+    "aisle": null
+  },
+  {
+    "id": 4,
+    "name": "Tomato Soup",
+    "description": "Yummy Yummy, tomato soup!",
+    "image": "http://img.zanda.com/item/04060720000096/1024x768/Campbells_Condensed_Tomato_Soup.jpg",
+    "price": 129,
+    "created_at": "2017-10-11T02:07:02.745Z",
+    "updated_at": "2017-10-26T18:31:13.453Z",
+    "aisle": null
+  },
+  {
+    "id": 3,
+    "name": "Pears",
+    "description": "Yum!",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/1/13/More_pears.jpg",
+    "price": 70,
+    "created_at": "2017-10-09T19:12:33.243Z",
+    "updated_at": "2017-10-26T18:31:25.177Z",
+    "aisle": null
+  },
+  {
+    "id": 3,
+    "name": "Soup",
+    "description": "Yum!",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/1/13/More_pears.jpg",
+    "price": 70,
+    "created_at": "2017-10-09T19:12:33.243Z",
+    "updated_at": "2017-10-26T18:31:25.177Z",
+    "aisle": null
+  }
+]

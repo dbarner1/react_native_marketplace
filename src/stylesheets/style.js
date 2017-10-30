@@ -14,9 +14,26 @@ module.exports = StyleSheet.create({
     width: 26,
     height: 26,
   },
+  productList: {
+    display: 'flex',
+    flexDirection: 'column',
+    height: 100000
+  },
+  productImage: {
+    width: 20,
+    height: 20
+  },
   big_icon: {
     width: 75,
     height: 75,
+  },
+  button: {
+    color: 'white',
+    fontSize: 20
+  },
+  extraLG_icon: {
+    width: 200,
+    height: 200,
   },
   home: {
     display: 'flex',
@@ -38,7 +55,7 @@ module.exports = StyleSheet.create({
     height: 100
   },
   aisleScreen: {
-    flex: 1,
+    display: 'flex',
     alignItems: 'center',
   },
   ScreenHeader: {
@@ -67,7 +84,11 @@ module.exports = StyleSheet.create({
     height: 400
   },
   product: {
+    display: 'flex',
+    flexDirection: 'column',
     borderWidth: 1,
-    borderColor: 'red'
+    width: 300,
+    borderColor: 'red',
+    alignItems: 'center'
   }
 });

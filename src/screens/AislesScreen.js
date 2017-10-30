@@ -37,6 +37,16 @@ var aislesData = [
   ]
 
 class AislesScreen extends Component {
+  static navigationOptions = {
+    tabBarLabel: 'Aisles',
+    // Note: By default the icon is only shown on iOS. Search the showIcon option below.
+    tabBarIcon: ({ tintColor }) => (
+      <Image
+        source={require('../images/store.png')}
+        style={[styles.icon]} />
+    ),
+  };
+
   constructor() {
     super();
     this.alertMe = this.alertMe.bind(this);

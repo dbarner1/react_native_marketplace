@@ -3,6 +3,15 @@ import {Text, View, Image, StyleSheet } from 'react-native';
 import styles from '../stylesheets/style.js';
 
 class CheckoutScreen extends Component {
+  static navigationOptions = {
+    tabBarLabel: 'Checkout',
+    // Note: By default the icon is only shown on iOS. Search the showIcon option below.
+    tabBarIcon: ({ tintColor }) => (
+      <Image
+        source={require('../images/cart.png')}
+        style={[styles.icon]} />
+    ),
+  };
   render() {
     return(
         <View style={styles.ScreenHeader}>

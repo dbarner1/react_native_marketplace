@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import {Text, View, StyleSheet } from 'react-native';
+import {Text, View, StyleSheet, ScrollView, Image, Button, TouchableOpacity } from 'react-native';
 import styles from '../stylesheets/style.js';
 import Product from './_Product.js';
+import productJson from '../api/products.json';
 
 class Aisle extends Component {
   constructor() {
@@ -10,7 +11,7 @@ class Aisle extends Component {
       aisleSelected:'',
       toDisplay: '',
       urlSelected: '',
-      products: ['peanut'],
+      products: [],
       fetched:'',
     };
   }
@@ -19,34 +20,49 @@ class Aisle extends Component {
     this.setState({ urlSelected: nextProps.urlSelected });
     this.setState({ aisleSelected: nextProps.aisleSelected  });
 
-    fetch('https://barner-marketplace-api.herokuapp.com/products')
-      .then(function(response) {return response.json();})
-      .then(function(json) {
+    var product_array = [];
 
-        json.forEach(function(product) {
-          var products_array = this.state.products;
-          products_array.push('pizza');
-          this.setState(products: products_array);
-        })
-      })
+    for(i=0;i<productJson.length;i++) {
+
+      var product = [
+        productJson[i].name,
+        productJson[i].price,
+        productJson[i].image
+      ]
+
+      product_array.push(product);
+    }
+
+      this.setState({ products: product_array  });
    }
 
   render() {
     return(
-        <View >
-          <Text>{ this.state.aisleSelected }</Text>
-          <Text>{this.state.urlSelected}</Text>
-          {
-            this.state.products.map(function(key, i) {
-               return(
-                 <View style={styles.product} key={i}>
-                   <Text>
-                     {key}
-                   </Text>
-                 </View>
-               )
-             })
-          }
+      <View style={styles.productList}>
+        <Text>{ this.state.aisleSelected }</Text>
+          <ScrollView>
+            {
+              this.state.products.map(function(product) {
+                 return(
+                   <View style={styles.product} key={product}>
+                     <Text>
+                       {product[0]}
+                     </Text>
+                     <Image
+                       style={{width: 80, height: 80}}
+                       source={require('../images/candy.jpg')}
+                     />
+                     <Text>
+                    ${product[1]}
+                     </Text>
+                     <TouchableOpacity>
+                    <Text>Add to Cart</Text>
+                     </TouchableOpacity>
+                   </View>
+                 )
+               })
+            }
+          </ScrollView>
         </View>
     )
   }
