@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-import {Text, View, ScrollView, Image, TouchableHighlight } from 'react-native';
+import { StyleSheet, Text, Image, ScrollView, TouchableHighlight, View } from 'react-native';
 import styles from '../stylesheets/style.js';
-import Aisle from './_Aisle.js';
+import Aisle from '../components/Aisle.js';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { NavigationActions } from 'react-navigation';
 
 var aislesData = [
   {
@@ -36,34 +39,14 @@ var aislesData = [
   }
   ]
 
-class AislesScreen extends Component {
-  static navigationOptions = {
-    tabBarLabel: 'Aisles',
-    // Note: By default the icon is only shown on iOS. Search the showIcon option below.
-    tabBarIcon: ({ tintColor }) => (
-      <Image
-        source={require('../images/store.png')}
-        style={[styles.icon]} />
-    ),
-  };
 
-  constructor() {
-    super();
-    this.alertMe = this.alertMe.bind(this);
-    this.state = {
-      aisleSelected:'',
-      urlSelected:'',
-      new_product: ''
-    };
-  }
-
-  alertMe(aisleSelected, urlSelected, new_product) {
+  function alertMe(aisleSelected, urlSelected, new_product) {
     this.setState({ aisleSelected: aisleSelected });
     this.setState({ urlSelected: urlSelected });
     this.setState({ new_product: new_product });
   }
 
-  render() {
+const BrowseScreen = ({ navigation, aisleSelected, dispatch }) => {
     return(
       <View style={styles.aisleScreen}>
         <View style={styles.ScreenHeader}>
@@ -71,46 +54,61 @@ class AislesScreen extends Component {
             source={require('../images/logo.png')}
             style={[styles.big_icon]} />
         </View>
+
         <ScrollView horizontal={true} style={styles.allAislesScroll}>
           <View style={ styles.aisleSelectDiv }>
-            <TouchableHighlight onPress={() => this.alertMe(aislesData[0].title, aislesData[0].url, aislesData[0].title)}>
+            <TouchableHighlight onPress={() => dispatch({ type: aislesData[0].title })}>
               <Image source={ {uri: aislesData[0].img} } style={styles.aisleSelectImage} />
             </TouchableHighlight>
             <Text style={styles.aisleScrollTitle}>{ aislesData[0].title } </Text>
           </View>
           <View style={ styles.aisleSelectDiv }>
-            <TouchableHighlight onPress={() => this.alertMe(aislesData[1].title, aislesData[1].url, aislesData[1].title)}>
+            <TouchableHighlight onPress={() => dispatch({ type: aislesData[1].title })}>
               <Image source={ {uri: aislesData[1].img} } style={styles.aisleSelectImage} />
             </TouchableHighlight>
             <Text style={styles.aisleScrollTitle}>{ aislesData[1].title } </Text>
           </View>
           <View style={ styles.aisleSelectDiv }>
-            <TouchableHighlight onPress={() => this.alertMe(aislesData[2].title, aislesData[2].url, aislesData[2].title)}>
+            <TouchableHighlight onPress={() => dispatch({ type: aislesData[2].title })}>
               <Image source={ {uri: aislesData[2].img} } style={styles.aisleSelectImage} />
             </TouchableHighlight>
             <Text style={styles.aisleScrollTitle}>{ aislesData[2].title } </Text>
           </View>
           <View style={ styles.aisleSelectDiv }>
-            <TouchableHighlight onPress={() => this.alertMe(aislesData[3].title, aislesData[3].url, aislesData[3].title)}>
+            <TouchableHighlight onPress={() => dispatch({  type: aislesData[3].title })}>
               <Image source={ {uri: aislesData[3].img} } style={styles.aisleSelectImage} />
             </TouchableHighlight>
             <Text style={styles.aisleScrollTitle}>{ aislesData[3].title } </Text>
           </View>
           <View style={ styles.aisleSelectDiv }>
-            <TouchableHighlight onPress={() => this.alertMe(aislesData[4].title, aislesData[4].url, aislesData[4].title)}>
+            <TouchableHighlight onPress={() => dispatch({  type: aislesData[4].title })}>
               <Image source={ {uri: aislesData[4].img} } style={styles.aisleSelectImage} />
             </TouchableHighlight>
             <Text style={styles.aisleScrollTitle}>{ aislesData[4].title } </Text>
           </View>
         </ScrollView>
         <View style={styles.currentAisle}>
-          <Aisle urlSelected={this.state.urlSelected} aisleSelected={this.state.aisleSelected} />
+          <Aisle />
         </View>
       </View>
     )
-  }
+  };
+
+BrowseScreen.propTypes = {
+  navigation: PropTypes.object.isRequired,
 };
 
+BrowseScreen.navigationOptions = {
+  title: 'Aisles',
+  tabBarIcon: ({ tintColor }) => (
+    <Image
+      source={require('../images/store.png')}
+      style={[styles.icon]} />
+  ),
+};
 
+const mapStateToProps = state => ({
+  aisleSelected: state.aisleSelected.aisleSelected,
+});
 
-module.exports = AislesScreen;
+export default connect(mapStateToProps)(BrowseScreen);

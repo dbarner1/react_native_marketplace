@@ -1,41 +1,22 @@
-import React from 'react';
-import { TabNavigator } from 'react-navigation';
-import styles from './src/stylesheets/style.js';
-import AislesScreen from './src/screens/AislesScreen.js';
-import HelpScreen from './src/screens/HelpScreen.js';
-import CheckoutScreen from './src/screens/CheckoutScreen.js';
-import HomeScreen from './src/screens/HomeScreen.js';
+import React, { Component } from 'react';
+import { AppRegistry } from 'react-native';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import AppReducer from './src/reducers/AppReducer';
+import AppWithNavigationState from './src/navigators/AppNavigator';
 
-const RootNavigator = TabNavigator({
-  Home: {
-    screen: HomeScreen,
-    navigationOptions: {
-      headerTitle: 'Home',
-    },
-  },
-  Aisle: {
-    screen: AislesScreen,
-    navigationOptions: {
-      headerTitle: 'Aisle',
-    },
-  },
-  Checkout: {
-    screen: CheckoutScreen,
-    navigationOptions: {
-      headerTitle: 'Checkout',
-    },
-   }
-},{
-    tabBarPosition: 'bottom',
-    animationEnabled: true,
-    showIcon: true,
-    initialRouteName: 'Aisle',
-    tabBarOptions: {
-      activeBackgroundColor: 'rgba(255,255,255,1)',
-      inactiveBackgroundColor: 'rgba(0,0,0,.0000002)',
-      activeTintColor: 'red',
-    }
-   },
-);
+class MarketApp extends React.Component {
+  store = createStore(AppReducer);
 
-export default RootNavigator;
+  render() {
+    return (
+      <Provider store={this.store}>
+        <AppWithNavigationState />
+      </Provider>
+    );
+  }
+}
+
+AppRegistry.registerComponent('MarketApp', () => MarketApp);
+
+export default MarketApp;

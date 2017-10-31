@@ -69,7 +69,8 @@ module.exports = StyleSheet.create({
     width: 120,
     height: 120,
     borderWidth: 1,
-    borderColor: 'white'
+    borderColor: 'white',
+    borderTopWidth: 0
   },
   aisleScrollTitle: {
     color: 'white',
