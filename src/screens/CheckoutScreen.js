@@ -1,16 +1,44 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Image, TouchableOpacity, StyleSheet, Text, View } from 'react-native';
+import { connect } from 'react-redux';
+import { Button, Image, TouchableOpacity, Alert, StyleSheet, Text, View } from 'react-native';
 import styles from '../stylesheets/style.js';
+import thunk from 'redux-thunk';
 
-const CheckoutScreen = ({ navigation }) => (
-  <View style={ styles.home }>
+const CheckoutScreen = ({ cart, dispatch, navigation }) => (
+  <View style={ styles.CheckoutScreen }>
   <Image
     source={require('../images/logo.png')}
     style={styles.extraLG_icon} />
+  <View style={styles.CartView}>
+     <View style={styles.CartTitles}>
+        <Text>Product Name</Text>
+        <Text>     </Text>
+        <Text>Price</Text>
+      </View>
+    {
+      cart.map(function(product) {
+        return(
+          <View style={styles.CartItem} key={product[0]}>
+            <Text style={styles.CartText}>{product[1]}</Text>
+            <Text>     </Text>
+            <Text style={styles.CartText}>${product[2]}</Text>
+          </View>
+        )
+      })
+    }
+    <View style={styles.CartTitles}>
+       <Text>     </Text>
+       <Text>     </Text>
+       <Text>Total</Text>
+       <Text>          </Text>
+       <Text>$50</Text>
+     </View>
+  </View>
     <TouchableOpacity>
     <Button
-      onPress={() => navigation.dispatch({ type: 'Submit Order (Action Not Setup Yet)' })}
+      onPress={() =>
+        Alert.alert("Bummer!","Unfortunately our store is closed and cannot accept orders at this time.")}
       title="Submit Order"
       color='white'
     />
@@ -31,4 +59,8 @@ CheckoutScreen.navigationOptions = {
   ),
 };
 
-export default CheckoutScreen;
+const mapStateToProps = state => ({
+  cart: state.cart.cart,
+});
+
+export default connect(mapStateToProps)(CheckoutScreen);

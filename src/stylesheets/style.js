@@ -17,7 +17,58 @@ module.exports = StyleSheet.create({
   productList: {
     display: 'flex',
     flexDirection: 'column',
-    height: 100000
+    alignItems: 'center',
+    width: 300
+  },
+  CartItem: {
+    display: 'flex',
+    flexDirection: 'row'
+  },
+  CartTitles: {
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'nowrap',
+    marginBottom: 10,
+    marginTop: 10,
+  },
+  productHeader: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    textAlign: 'center',
+    color: 'white',
+    padding:20,
+    backgroundColor: 'grey',
+    width: 300
+  },
+  CartView: {
+    backgroundColor: 'white',
+    minHeight: 100,
+    minWidth: 300,
+    padding: 30,
+    marginBottom:30
+  },
+  CartText: {
+    color: 'black'
+  },
+  CheckoutScreen: {
+    display: 'flex',
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    backgroundColor:'#2196F3'
+  },
+
+  addToCartButton: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'orange',
+    height: 50,
+    width: 200,
+    margin: 10,
   },
   productImage: {
     width: 20,
@@ -82,14 +133,15 @@ module.exports = StyleSheet.create({
     borderColor: 'white'
   },
   currentAisle: {
-    height: 400
+    paddingTop: 20,
+    height: 500
   },
   product: {
     display: 'flex',
     flexDirection: 'column',
     borderWidth: 1,
     width: 300,
-    borderColor: 'red',
+    borderColor: 'grey',
     alignItems: 'center'
   }
 });

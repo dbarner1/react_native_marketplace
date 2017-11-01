@@ -3,23 +3,38 @@ import { connect } from 'react-redux';
 import {Text, View, StyleSheet, ScrollView, Image, Button, TouchableOpacity } from 'react-native';
 import styles from '../stylesheets/style.js';
 import Product from './Product.js';
-
 import { NavigationActions } from 'react-navigation';
+import ButtonAddCart from './ButtonAddCart';
 
-const Aisle = ({ aisleSelected, productsAvailable, dispatch }) => {
+const Aisle = ({ productsAvailable, dispatch }) => {
     return(
-      <View style={styles.productList}>
-        <Text>{ aisleSelected }</Text>
-        <View>
-          { productsAvailable }
-        </View>
-        </View>
+      <ScrollView>
+        <View style={styles.productList}>
+            {
+              productsAvailable.map(function(i) {
+                 return(
+                   <View style={styles.product} key={i}>
+                     <Text>
+                       {i[0]}
+                     </Text>
+                     <Text>
+                       ${i[1]}
+                     </Text>
+                     <Image
+                       source={ {uri: i[2]} }
+                       style={styles.aisleSelectImage} />
+                    <ButtonAddCart />
+                   </View>
+                 )
+               })
+            }
+          </View>
+        </ScrollView>
     )
   };
 
   const mapStateToProps = state => ({
-    aisleSelected: state.aisleSelected.aisleSelected,
-    productsAvailable: state.aisleSelected.productsAvailable,
+    productsAvailable: state.productsAvailable.productsAvailable,
   });
 
   export default connect(mapStateToProps)(Aisle);
