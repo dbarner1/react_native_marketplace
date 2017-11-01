@@ -8,9 +8,9 @@ import BrowseScreen from '../screens/BrowseScreen';
 import CheckoutScreen from '../screens/CheckoutScreen';
 
 export const AppNavigator = TabNavigator({
-  Checkout: { screen: CheckoutScreen },
   Specials: { screen: SpecialsScreen },
   Browse: { screen: BrowseScreen },
+  Checkout: { screen: CheckoutScreen },
 });
 
 const AppWithNavigationState = ({ dispatch, nav }) => (
